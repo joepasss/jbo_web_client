@@ -5,7 +5,11 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run_webpack_dev_server": "webpack serve --config ./webpack/webpack.dev.config.ts",
+    "webpack_build": "webpack --config ./webpack/webpack.prod.config.ts",
+    "dev": "./scripts/dev.sh",
+    "build": "./scripts/build.sh"
   },
   "repository": {
     "type": "git",
@@ -17,16 +21,43 @@
     "url": "https://github.com/joepasss/jbo_web_client/issues"
   },
   "homepage": "https://github.com/joepasss/jbo_web_client#readme",
-  "overrides": { "eslint": "^9.5.0" },
+  "overrides": {
+    "eslint": "^9.5.0"
+  },
   "devDependencies": {
+    "@babel/core": "^7.24.7",
     "@eslint/compat": "^1.1.0",
     "@eslint/js": "^9.5.0",
     "@types/node": "^20.14.7",
+    "@types/webpack": "^5.28.5",
+    "@types/webpack-dev-server": "^4.7.2",
+    "babel-loader": "^9.1.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^7.1.2",
     "eslint": "^9.5.0",
     "eslint-plugin-react": "^7.34.3",
     "globals": "^15.6.0",
+    "html-loader": "^5.0.0",
+    "html-webpack-plugin": "^5.6.0",
+    "postcss-loader": "^8.1.1",
+    "resolve-ts-aliases": "^1.0.1",
+    "sass": "^1.77.6",
+    "sass-loader": "^14.2.1",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.2",
-    "typescript-eslint": "^7.13.1"
+    "typescript-eslint": "^7.13.1",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4",
+    "webpack-merge": "^5.10.0"
+  },
+  "dependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "mini-css-extract-plugin": "^2.9.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }
