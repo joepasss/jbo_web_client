@@ -19,9 +19,7 @@
     "typeRoots": ["./node_modules/@types", "./types"]
   },
   "include": [
-    "src/**/*",
-    "src/declare.d.ts",
-    "eslint.config.mjs"
+    "src",
   ],
   "ts-node": {
     "esm": true,
