@@ -4,6 +4,7 @@ import config from "./webpack.common.config";
 import { merge } from "webpack-merge";
 import path from "path";
 import { fileURLToPath } from "url";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 const currentDir = path.resolve(fileURLToPath(import.meta.url), "../");
 
@@ -34,7 +35,19 @@ const devConfig: Configuration = merge(config, {
     rules: [
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
+        use: [
+          "style-loader",
+          "css-loader",
+          "postcss-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              sassOptions: {
+                includePaths: ["./node_modules"],
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
@@ -42,6 +55,12 @@ const devConfig: Configuration = merge(config, {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: "src/index.html",
+    }),
+  ],
 });
 
 export default devConfig;

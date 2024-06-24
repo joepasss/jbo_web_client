@@ -19,7 +19,7 @@
     "typeRoots": ["./node_modules/@types", "./types"]
   },
   "include": [
-    "src",
+    "src"
   ],
   "ts-node": {
     "esm": true,

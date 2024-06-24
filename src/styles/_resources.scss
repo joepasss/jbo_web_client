@@ -1,0 +1,17 @@
+div.resources {
+  padding-bottom: 0.25rem;
+
+  div.resource-item {
+    display: flex;
+    gap: 1rem;
+
+    p.tag {
+      width: 6rem;
+      font-weight: bold;
+    }
+
+    p.data {
+      font-style: italic;
+    }
+  }
+}

@@ -2,7 +2,6 @@ import { Configuration } from "webpack";
 import path from "path";
 import { fileURLToPath } from "url";
 import { resolveTsAliases } from "resolve-ts-aliases";
-import HtmlWebpackPlugin from "html-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
 const currentDir = path.resolve(fileURLToPath(import.meta.url), "../");
@@ -35,13 +34,7 @@ const config: Configuration = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: "src/index.html",
-    }),
-    new CleanWebpackPlugin(),
-  ],
+  plugins: [new CleanWebpackPlugin()],
 };
 
 export default config;

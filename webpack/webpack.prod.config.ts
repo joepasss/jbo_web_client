@@ -1,10 +1,12 @@
 import { type Configuration, Chunk, Module } from "webpack";
 import config from "./webpack.common.config";
 import { merge } from "webpack-merge";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 const prodConfig: Configuration = merge(config, {
   mode: "production",
+  devtool: false,
   output: {
     filename: "js/[name].[contenthash:12].js",
   },
@@ -38,7 +40,14 @@ const prodConfig: Configuration = merge(config, {
           MiniCssExtractPlugin.loader,
           "css-loader",
           "postcss-loader",
-          "sass-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              sassOptions: {
+                includePaths: ["./node_modules"],
+              },
+            },
+          },
         ],
       },
       {
@@ -48,6 +57,22 @@ const prodConfig: Configuration = merge(config, {
     ],
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: "src/index.html",
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    }),
     new MiniCssExtractPlugin({
       filename: "css/[name].[contenthash:12].css",
     }),

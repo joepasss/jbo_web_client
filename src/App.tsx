@@ -1,7 +1,13 @@
-import React from "react";
+import Header from "./components/Header";
+import Resources from "./components/Resources/Resources";
 
 const App = () => {
-  return <div>App</div>;
+  return (
+    <div id="container">
+      <Header />
+      <Resources />
+    </div>
+  );
 };
 
 export default App;
